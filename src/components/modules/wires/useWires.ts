@@ -8,7 +8,7 @@ export const useWires = () => {
     const moduleIsComplete = ref(false)
        
     const cut = (index: number) => {
-      if (correctWireIndex.value !== null) {
+      if (correctWireIndex.value !== null && !moduleIsComplete.value) {
         if(cutWire(index, correctWireIndex.value)){
           moduleIsComplete.value = true;
         } else {

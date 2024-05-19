@@ -13,7 +13,6 @@ export const generateWires = () => {
   };
 
 
-
 export const determineCorrectWire = (wires: string[])=> {
     const numWires = wires.length;
 
