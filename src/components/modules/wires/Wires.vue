@@ -22,6 +22,12 @@ watch(penalty, (newValue, _oldValue) => {
   }
 });
 
+watch(moduleIsComplete, (newValue, _oldValue) => {
+  if (newValue) {
+    game.validateModule();
+  }
+});
+
 </script>
 
 <style scoped>
