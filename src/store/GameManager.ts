@@ -3,7 +3,7 @@ import { Ref, ref } from "vue";
 class Game{
     public count:Ref<number> = ref(200)
     public isLost:Ref<boolean> = ref(false)
-    private penaltyCount = ref(0)
+    public penaltyCount = ref(0)
     private _penaltyThreeshold = 3
 
     constructor(){
