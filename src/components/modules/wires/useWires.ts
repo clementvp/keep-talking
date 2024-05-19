@@ -3,12 +3,21 @@ import {generateWires, cutWire, determineCorrectWire} from './utils'
 
 export const useWires = () => {
     const wires:Ref<string[]> = ref([]);
-    const result:Ref<null | boolean> = ref(null);
+    const penalty:Ref<boolean> = ref(false);
     const correctWireIndex: Ref<null | number> = ref(null);
+    const moduleIsComplete = ref(false)
        
     const cut = (index: number) => {
       if (correctWireIndex.value !== null) {
-        result.value = cutWire(index, correctWireIndex.value);
+        if(cutWire(index, correctWireIndex.value)){
+          moduleIsComplete.value = true;
+        } else {
+          penalty.value = true;
+          setTimeout(() => {
+            penalty.value = false;
+          }, 50);
+        }
+        
       }
     };
     
@@ -17,6 +26,6 @@ export const useWires = () => {
         correctWireIndex.value = determineCorrectWire(wires.value);
       });
     
-      return { wires, result, cut };
+      return { wires, penalty, cut, moduleIsComplete };
 }
 

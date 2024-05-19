@@ -3,11 +3,15 @@
     Count: {{ game.count  }}
     Islost: {{ lost }}
   </div>
-  <h1 v-if="lost">Perdu</h1>
+  
+  <div>
+    <Wires></Wires>
+  </div>
  
 </template>
 <script setup lang="ts">
 
+import Wires from '@/components/modules/wires/Wires.vue';
 import Game from '@/store/GameManager';
 import {inject} from 'vue'
 const game: Game = inject<Game>('Game')!

@@ -1,7 +1,7 @@
 import { Ref, ref } from "vue";
 
 class Game{
-    public count:Ref<number> = ref(15)
+    public count:Ref<number> = ref(200)
     public isLost:Ref<boolean> = ref(false)
     private _penaltyCount = 0
     private _penaltyThreeshold = 3

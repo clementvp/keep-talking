@@ -5,13 +5,22 @@
       <div v-for="(color, index) in wires" :key="index" class="wire" :style="{ backgroundColor: color }" @click="cut(index)">
       </div>
     </div>
-    <p id="result">{{ result }}</p>
+    <p>{{ moduleIsComplete }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
+import Game from '@/store/GameManager';
 import {useWires} from './useWires'
-const { wires, result, cut } = useWires()
+const { wires, moduleIsComplete, cut, penalty } = useWires()
+import {inject, watch} from 'vue'
+const game: Game = inject<Game>('Game')!
+
+watch(penalty, (newValue, _oldValue) => {
+  if (newValue) {
+    game.addPenalty();
+  }
+});
 
 </script>
 
