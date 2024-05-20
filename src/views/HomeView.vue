@@ -1,5 +1,4 @@
 <template>
-  <v-container>
     <v-row no-gutters>
       <v-col
         cols="12"
@@ -19,7 +18,6 @@
         </v-card>
       </v-col>
     </v-row>
-  </v-container>
 </template>
 <script setup lang="ts">
 import Game from '@/store/GameManager';

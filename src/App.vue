@@ -7,11 +7,21 @@ provide('Game', game)
 </script>
 
 <template>
-  <v-layout>
-    <v-main>
-      <router-view/>
-    </v-main>
-  </v-layout>
+  <v-container class="fill-height">
+    <v-layout class="fill-height">
+      <v-main class="fill-height">
+        <router-view/>
+      </v-main>
+    </v-layout>
+  </v-container>
 </template>
-
+<style>
+html, body {
+  height:100%;
+}
+#app {
+  height: inherit;
+  width: inherit;
+}
+</style>
 
