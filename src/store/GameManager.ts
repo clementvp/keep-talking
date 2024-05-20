@@ -1,5 +1,7 @@
 import { Ref, ref } from "vue";
 import Wires from '@/components/modules/wires/Wires.vue';
+
+const registeredModules = [Wires]
 class Game{
     public id:NodeJS.Timeout| string = ""
     public count:Ref<number> = ref(200)
@@ -11,6 +13,7 @@ class Game{
     private _penaltyThreeshold = 3
 
     constructor(){
+        this.getRandomModules(3)
         this.start()
     }
     
@@ -45,6 +48,18 @@ class Game{
 
     public get modules(){
         return this._modules
+    }
+
+    private getRandomModules(n: number) {
+        const result = [];
+        const length = registeredModules.length;
+    
+        for (let i = 0; i < n; i++) {
+            const randomIndex = Math.floor(Math.random() * length);
+            result.push(registeredModules[randomIndex]);
+        }
+    
+        this._modules = result;
     }
 
 }
