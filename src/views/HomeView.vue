@@ -3,15 +3,18 @@
     Compte a rebours: {{ game.count  }}
   </div>
   
-  <div>
-    <Wires></Wires>
-  </div>
+  <div v-for="(component, index) in game.modules " :key="index">
+      <component :is="component" />
+    </div>
  
 </template>
 <script setup lang="ts">
 
-import Wires from '@/components/modules/wires/Wires.vue';
+
 import Game from '@/store/GameManager';
 import {inject} from 'vue'
 const game: Game = inject<Game>('Game')!
+
+
+
 </script>

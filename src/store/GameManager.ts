@@ -1,11 +1,11 @@
 import { Ref, ref } from "vue";
-
+import Wires from '@/components/modules/wires/Wires.vue';
 class Game{
     public id:NodeJS.Timeout| string = ""
     public count:Ref<number> = ref(200)
     public isLost:Ref<boolean> = ref(false)
     public isWon:Ref<boolean> = ref(false)
-    private _modules: string[] = ['Wires']
+    private _modules = [Wires]
     private _resolvedModules = 0 
     public penaltyCount = ref(0)
     private _penaltyThreeshold = 3
@@ -41,6 +41,10 @@ class Game{
             clearInterval(this.id)
             this.isWon.value = true
         }
+    }
+
+    public get modules(){
+        return this._modules
     }
 
 }
