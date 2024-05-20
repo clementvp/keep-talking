@@ -4,7 +4,7 @@ import Wires from '@/components/modules/wires/Wires.vue';
 const registeredModules = [Wires]
 class Game{
     public id:NodeJS.Timeout| string = ""
-    public count:Ref<number> = ref(200)
+    public count:Ref<number> = ref(5)
     public isLost:Ref<boolean> = ref(false)
     public isWon:Ref<boolean> = ref(false)
     private _modules = [Wires]
@@ -21,7 +21,7 @@ class Game{
         this.id = setInterval(() => {
         this.count.value--;
         if (this.count.value <= 0) {
-            this.isLost.value = true;
+            this.isLost.value = true;       
             clearInterval(this.id);
             }
         }, 1000);
@@ -34,7 +34,8 @@ class Game{
     public addPenalty(){
         this.penaltyCount.value++
         if (this.penaltyCount.value >= this._penaltyThreeshold) {
-           this.isLost.value = true
+            clearInterval(this.id)
+            this.isLost.value = true
         }
     }
 
